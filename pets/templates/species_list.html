@@ -1,0 +1,39 @@
+{% extends 'main.html' %}
+
+
+{% block content %}
+<div class="flex justify-between items-center">
+<h1>Species List</h1>
+<a href="{% url 'species_create' %}" class="btn btn-primary">Add New Species</a>
+</div>
+    {% if messages %}
+<div class="alert alert-danger" role="alert">
+    {% for message in messages %}
+    <p>{{ message }}</p>
+    {% endfor %}
+</div>
+{% endif %}
+    <table class="table">
+                    <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Action</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for species in species %}
+                        <tr>
+                            <td>{{ species.specie_id }}</td>
+                            <td>{{ species.species_name }}</td>
+                            <td>
+                                <a href="{% url 'species_update' species.pk %}" class="btn btn-sm btn-info">Edit</a>
+                                <a  href="{% url 'species_delete' species.pk %}" class="btn btn-sm btn-warning">Delete</a>
+                            </td>
+                        </tr>
+                   {% endfor %}
+                    </tbody>
+                </table>
+
+
+{% endblock content %}

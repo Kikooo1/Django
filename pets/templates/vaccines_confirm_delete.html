@@ -1,0 +1,13 @@
+{% extends 'main.html' %}
+
+
+{% block content %}
+
+<h1>Delete Vaccine?</h1>
+<p>Are you sure you want to delete "{{ object.vaccine_name }}"?</p>
+<form method="POST">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-warning">Confirm</button>
+</form>
+
+{% endblock content %}

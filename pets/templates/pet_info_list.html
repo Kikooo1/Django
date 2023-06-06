@@ -1,0 +1,41 @@
+{% extends 'main.html' %}
+
+
+{% block content %}
+
+    <div class="flex justify-between items-center">
+        <h1>Pet Information List</h1>
+        <a href="{% url 'pet_info_create' %}" class="btn btn-primary">Add New Pet</a>
+    </div>
+
+    <table class="table">
+               <thead>
+               <tr>
+                   <th>ID</th>
+                   <th>Pet Name</th>
+                   <th>Owner Name</th>
+                   <th>Species</th>
+                   <th>Actions</th>
+               </tr>
+               </thead>
+               <tbody>
+                {% for pet in pets %}
+                   <tr>
+                       <td>{{  pet.pet_id }}</td>
+                       <td>{{  pet.pet_name }}</td>
+                       <td>{{ pet.owner_name }}</td>
+                       <td>{{ pet.specie.species_name }}</td>
+                       <td>
+                           <a href="{% url 'pet_info_update' pet.pk %}" class="btn btn-info">Edit</a>
+                            <a href="{% url 'pet_info_delete' pet.pk %}" class="btn btn-warning">Delete</a>
+                            <a href="{% url 'history_create' pet.pk %}" class="btn btn-primary">Add History</a>
+                        <a href="{% url 'vaccines_administered_create' pet.pk %}" class="btn btn-primary">Add Vaccines Administered</a>
+                        <a href="{% url 'pet_info_detail' pet.pk %}" class="btn btn-primary">Show Details</a>
+
+                       </td>
+                   </tr>
+            {% endfor %}
+               </tbody>
+           </table>
+
+{% endblock content %}

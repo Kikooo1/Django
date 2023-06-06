@@ -1,0 +1,23 @@
+{% extends 'main.html' %}
+
+
+{% block content %}
+
+<h1>{{ pet.pet_name }}</h1>
+<p>Owner: {{ pet.owner_name }}</p>
+<p>Species: {{ pet.specie.species_name }}</p>
+    <img src="{{ pet.img }}" width="300">
+
+<h2>History</h2>
+{% for history in histories %}
+    <p>Date visited: {{ history.date_visited }}</p>
+    <p>Weight (kg): {{ history.weight_kg }}</p>
+    <p>Reason of Visit: {{ history.reason_of_visit.reason }}</p>
+{% endfor %}
+
+<h2>Vaccines Administered</h2>
+{% for vaccine_administered in vaccines_administered %}
+    <p>Vaccine: {{ vaccine_administered.vaccine.vaccine_name }}</p>
+{% endfor %}
+
+{% endblock content %}

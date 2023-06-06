@@ -1,0 +1,15 @@
+{% extends 'main.html' %}
+
+
+{% block content %}
+
+<h1>Add History</h1>
+<form method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <h2>Reason of Visit</h2>
+    {{ reason_form.as_p }}
+    <button type="submit" class="btn btn-primary">Save</button>
+</form>
+
+{% endblock content %}
